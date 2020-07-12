@@ -10,6 +10,7 @@ app.get('/',(req,res)=>{
 
 app.use('/api/',routes)
 
+
 const PORT = 8080;
 const HOST = '0.0.0.0';
 
