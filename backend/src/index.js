@@ -1,6 +1,6 @@
 // const express = require('express')
 import  express from "express";
-import os from "os";
+// import os from "os";
 import routes from "./routes/index.js"
 
 const app = express();
