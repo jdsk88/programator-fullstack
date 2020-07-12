@@ -34,3 +34,6 @@ npm init -y
 npm i express 
 
 .gitignore
+
+# Watching for changes
+https://github.com/remy/nodemon#nodemon
