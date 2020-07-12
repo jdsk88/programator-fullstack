@@ -1,10 +1,24 @@
 import express from "express";
+import { Product, InitProducts } from "../models/products.js";
 
 const routes = express.Router({});
 
-
 routes.get("/", (req, res) => {
-  res.send(["produkt 1","produkt 2"]);
+  Product.find({
+    name: { 
+      $regex: req.query.name || ""
+    },
+  })
+  .limit(10)
+  .then((products) => {
+    res.send(products);
+  });
 });
 
-export default routes
+routes.get("/init", (req, res) => {
+  InitProducts().then(() => {
+    res.send("done");
+  });
+});
+
+export default routes;

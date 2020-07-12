@@ -1,6 +1,7 @@
 import express from "express";
-import orders from './orders.js'
-import cart from "./cart.js"
+import orders from './orders.js';
+import cart from "./cart.js";
+import users from "./users.js";
 import products from './products.js'
 import wishlist from "./wishlist.js";
 
@@ -17,4 +18,3 @@ routes.use("/wishlist", wishlist);
 routes.use("/users", users);
 
 export default routes;
-

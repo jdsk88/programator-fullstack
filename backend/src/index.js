@@ -1,11 +1,14 @@
-// const express = require('express')
+// import dotenv from 'dotenv';
+// dotenv.config({path: __dirname + '../.env'}); /// load from './.env' file
+
 import  express from "express";
+import './config/mongo.js'
 import routes from "./routes/index.js";
+import bodyParser from 'body-parser'
 
 const app = express();
-// const wifiCard = os.networkInterfaces();  //check yout network card name
-// const { wlx243c2006ce36 } = wifiCard;  //enter your network card name 
-// const IPaddress = wlx243c2006ce36[0].address;  //take out your IP from network card
+
+app.use(bodyParser())
 
 app.get('/',(req,res)=>{
   res.send('Hello world!')
@@ -14,9 +17,8 @@ app.get('/',(req,res)=>{
 app.use('/api/',routes)
 
 
-const PORT = 8080;
-const HOST = "localhost";
-// const HOST = IPaddress; 
+const PORT = process.env.PORT;
+const HOST = process.env.HOST;
 
 app.listen(PORT, HOST, () => {
   console.log(`Listening on http://${HOST}:${PORT}/`);
