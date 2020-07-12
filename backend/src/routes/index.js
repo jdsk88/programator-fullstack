@@ -3,6 +3,7 @@ import orders from './orders.js'
 import cart from "./cart.js"
 import products from './products.js'
 import wishlist from "./wishlist.js";
+import users from "./users.js"
 
 const routes = express.Router({});
 
