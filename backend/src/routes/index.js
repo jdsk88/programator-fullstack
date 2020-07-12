@@ -1,4 +1,5 @@
 import express from "express";
+import products from './products.js'
 
 const routes = express.Router({});
 
@@ -6,10 +7,7 @@ routes.get("/", (req, res) => {
   res.send("Hello API!");
 });
 
-// routes.use('/products')
-routes.get("/products", (req, res) => {
-  res.send(["produkt 1"]);
-});
+routes.use('/products',products)
 
 // Aneta
 // routes.use('/users')
