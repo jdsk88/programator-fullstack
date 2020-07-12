@@ -26,3 +26,11 @@ git remote
 # Pull changes from `matt` to master and track
 git pull matt -t master
 
+# Frontend
+create-react-app frontend
+
+# Backend
+npm init -y
+npm i express 
+
+.gitignore
