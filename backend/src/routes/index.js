@@ -1,11 +1,7 @@
 import express from "express";
-<<<<<<< HEAD
-import users from "./users.js"
-=======
 import products from './products.js'
 import wishlist from "./wishlist.js";
 
->>>>>>> a219b0ca888d22e919e8cafc92fdc95bddf08e76
 
 const routes = express.Router({});
 
