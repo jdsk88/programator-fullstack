@@ -1,4 +1,5 @@
 import express from "express";
+import products from './products.js'
 import wishlist from "./wishlist.js";
 
 
@@ -8,7 +9,7 @@ routes.get("/", (req, res) => {
   res.send("Hello API!");
 });
 
-// routes.use('/products')
+routes.use('/products',products)
 routes.use("/wishlist", wishlist);
 
 // Aneta
