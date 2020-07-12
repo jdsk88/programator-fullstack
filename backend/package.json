@@ -17,7 +17,9 @@
     "nodemon": "^2.0.4"
   },
   "nodemonConfig": {
-    "ignore": ["node_modules/*"],
+    "ignore": [
+      "node_modules/*"
+    ],
     "delay": "300"
   }
 }

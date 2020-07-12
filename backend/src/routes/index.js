@@ -7,13 +7,13 @@ import wishlist from "./wishlist.js";
 const routes = express.Router({});
 
 routes.get("/", (req, res) => {
-
-res.send("Hello API!");
+  res.send("Hello API!");
 });
 
 routes.use("/cart", cart);
-routes.use('/products',products)
+routes.use('/products', products)
 routes.use("/wishlist", wishlist);
+routes.use("/users", users);
 
 export default routes;
 
