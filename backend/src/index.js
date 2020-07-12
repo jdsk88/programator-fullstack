@@ -1,7 +1,6 @@
 // const express = require('express')
 import  express from "express";
-// import os from "os";
-import routes from "./routes/index.js"
+import routes from "./routes/index.js";
 
 const app = express();
 // const wifiCard = os.networkInterfaces();  //check yout network card name
@@ -12,7 +11,7 @@ app.get('/',(req,res)=>{
   res.send('Hello world!')
 })
 
-app.use('/api/', routes)
+app.use('/api/',routes)
 
 const PORT = 8080;
 const HOST = "localhost";
