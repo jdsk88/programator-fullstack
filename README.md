@@ -37,3 +37,8 @@ npm i express
 
 # Watching for changes
 https://github.com/remy/nodemon#nodemon
+
+npm run watch
+
+# Branches
+git checkout -b 7_products-routes
