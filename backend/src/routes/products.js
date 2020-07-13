@@ -21,4 +21,10 @@ routes.get("/init", (req, res) => {
   });
 });
 
+routes.get("/delete", (req, res) => {
+  Product.deleteMany().then(() => {
+    res.send("product list deleted");
+  })
+} )
+
 export default routes;

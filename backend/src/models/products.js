@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 export const productSchema = mongoose.Schema({
+  index: Number,
   name: String,
   description: String,
   price: Number,
@@ -24,10 +25,16 @@ export const InitProducts = () => {
     description: "Some description",
     price: 150,
   });
-
+  const prod4 = new Product({
+    name: 'Egzul Skateboards 8.375',
+    description: "SKATEBOARDING",
+    price: 199.99,
+  });
+ 
   return Promise.all([
     prod1.save().then(() => console.log("saved prod1")),
     prod2.save().then(() => console.log("saved prod2")),
     prod3.save().then(() => console.log("saved prod3")),
+    prod4.save().then(() => console.log("saved prod3")),
   ]);
 };
