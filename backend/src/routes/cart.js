@@ -1,24 +1,42 @@
 import express from "express";
-import { Cart, InitCart } from "../models/cart.js";
+import { Cart, InitCart, insertToDB } from "../models/cart.js";
 
 const routes = express.Router({});
 
 routes.get("/", (req, res) => {
   Cart.find({
-    name: { 
-      $regex: req.query.name || ""
+    user_name: {
+      $regex: req.query.user_name || "",
     },
   })
-  .limit(10)
-  .then((products) => {
-    res.send(products);
-  });
+    .limit(10)
+    .then((products) => {
+      res.send(products);
+    });
 });
 
 routes.get("/init", (req, res) => {
-    InitCart().then(() => {
+  InitCart().then(() => {
     res.send("cart initialization done");
   });
 });
+
+routes.get("/insert", (req, res) => {
+  insertToDB().then(() => {
+    res.send("cart initialization done");
+  });
+});
+
+routes.get("/delete", (req, res) => {
+  Cart.deleteMany().then(() => {
+    res.send("cart list deleted");
+  });
+});
+
+
+
+
+
+
 
 export default routes;
