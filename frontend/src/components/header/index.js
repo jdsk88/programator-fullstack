@@ -7,38 +7,22 @@ console.log("Header componentd loaded");
 const Header = () => {
   return (
     <>
-    <nav>
-        <Logo />
+      <header>
+        <div className="weather"></div>
+        <div className="welcome">Welcome Johnny!</div>
         <NavLink to="/products" className="navbar-item">
           <i className="fas fa-th"></i>
-          <label className="navbar-item-label">Products</label>
+          <label className="navbar-item-label"></label>
         </NavLink>
-        <NavLink to="/wishlist" className="navbar-item">
-          <i className="fas fa-list"></i>
-          <label className="navbar-item-label">WishList</label>
+        <NavLink to="/blog" className="navbar-item">
+          <i className="fas fa-comments-dollar"></i>
+          <label className="navbar-item-label"></label>
         </NavLink>
-        <div className="navbar-item ">
-          <NavLink to="/blog" className="navbar-item">
-            <i className="fab fa-microblog"></i>
-            <label className="navbar-item-label"></label>
-          </NavLink>
-          <NavLink to="/cms" className="navbar-item">
-            <i className="fas fa-cog"></i>
-            <label className="navbar-item-label"></label>
-          </NavLink>
-        </div>
-        <div className="navbar-item ">
-          <NavLink to="/cart" className="navbar-item">
-            <i className="fas fa-shopping-cart"></i>
-            <label className="navbar-item-label"></label>
-          </NavLink>
-          <NavLink to="/users" className="navbar-item">
-            <i className="fas fa-user"></i>
-            <label className="navbar-item-label"></label>
-          </NavLink>
-        </div>
-    </nav>
-
+        <NavLink to="/cms" className="navbar-item">
+          <i className="fas fa-ellipsis-v"></i>
+          <label className="navbar-item-label"></label>
+        </NavLink>
+      </header>
     </>
   );
 };

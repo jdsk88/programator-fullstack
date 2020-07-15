@@ -4,7 +4,7 @@ import api_url from "../../config";
 const Cms = () => {
   const [product_name, setProductName] = useState("");
   const [product_description, setProductDescription] = useState("");
-  // const []
+  const [insertProduct, setInsertProduct] = useState();
 
   const postProduct = () => {
     axios.post(api_url + "/api/products", {
@@ -22,12 +22,12 @@ const Cms = () => {
         onChange={(e) => setProductName(e.target.value)}
       />
       <input
-        type="password"
+        type="text"
         placeholder="enter product description"
         value={product_description}
         onChange={(e) => setProductDescription(e.target.value)}
       />
-      <input type="button" value="Dodaj" />
+      <input type="button" value={insertProduct} onChange={postProduct} />
     </form>
   );
 };

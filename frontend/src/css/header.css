@@ -1,23 +1,35 @@
 /* #root > div.navbar-parent {
 } */
 
-#root > nav {
+#root > header{
   top: 0;
   left: 0;
   width: 100vw;
-  height: 60px;
+  height: 45px;
   display: flex;
   padding: 0;
   background: #343a40 !important;
 }
-#root > nav > a {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-around;
-  align-items: flex-start;
+
+#root > header > div.weather{
+  width: 10vw;
+  height: 45px;
 }
 
-#root > nav > a.navbar-item {
+#root > header > div.welcome{
+  width: 60vw;
+  height: 45px;
+}
+
+
+#root > header > a {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+
+}
+
+#root > header > a.navbar-item {
   display: flex;
   flex-direction: row;
   align-self: center;
@@ -25,50 +37,50 @@
   padding: 10px;
   text-decoration: none;
   box-sizing: border-box;
-  border-radius: 8px;
-  width: 125px;
+  /* border-radius: 8px; */
+  width: 10vw;
   color: silver;
   border: 0px;
   border-style: outset;
   background: #343a40 !important;
 }
 
-#root > nav > a.navbar-item > label {
+#root > header > a.navbar-item > label {
   font-size: 18px;
   margin-top: auto;
   margin-bottom: auto;
 }
 
-#root > nav > a.navbar-item.active {
+#root > header > a.navbar-item.active {
   border: solid gray 0.5px;
   border-style: inset;
   /* background-color: #6d6a6f; */
   /* background-color:black;  */
   /* color: #32f0ec; */
-  color: #60dafb;
+  color: #ff5a00;
 
-  text-shadow: #60dafb 2px 2px 2px 2px;
+  text-shadow: #ff5a00 2px 2px 2px 2px;
 
   background: #343a40 !important;
 }
-#root > nav > a.navbar-item > i {
+#root > header > a.navbar-item > i {
   font-size: 18px;
   align-self: center;
 }
-#root > nav > a.navbar-item.active > i {
+#root > header > a.navbar-item.active > i {
   font-size: 18px;
 }
 
-#root > nav > div.navbar-item{
+#root > header > div.navbar-item{
   position: fixed;
   right: 6vw;
 }
-#root > nav > div.navbar-item:last-child{
+#root > header > div.navbar-item:last-child{
   position: fixed;
   right: 0;
 }
 
-#root > nav > div{
+#root > header > div{
   /* position: fixed;
   right: 0; */
   display: flex;
@@ -88,21 +100,21 @@
   background: #343a40 !important;
 }
 
-#root > nav > div > a.navbar-item {
+#root > header > div > a.navbar-item {
   height: 60px;
   width: 6vw;
   text-align: center;
 }
 
-#root > nav > div > a.navbar-item > i {
+#root > header > div > a.navbar-item > i {
   color: silver;
 }
-#root > nav > div > a.navbar-item.active {
+#root > header > div > a.navbar-item.active {
   border: solid gray 0.5px;
   border-style: inset;
 }
 
-#root > nav > div > a.navbar-item.active > i{
+#root > header > div > a.navbar-item.active > i{
   color: #60dafb;
 }
 

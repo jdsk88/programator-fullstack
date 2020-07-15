@@ -1,0 +1,47 @@
+#root > div.search-bar {
+  width: 100vw;
+  height: 50px;
+  background: #343a40 !important;
+}
+#root > div.search-bar > div.search-bar-items {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: stretch;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#root > div.search-bar > div > div {
+  margin-top: 6px;
+  margin-bottom: 1px;
+  /* margin-left: 3px; */
+  width: 10vw;
+  /* background-color: white; */
+}
+
+#root > div.search-bar > div > div > i {
+  margin-top: 6px;
+  margin-bottom: 1px;
+  margin-left: 3px;
+  width: 10vw;
+  font-size: 1.5rem;
+  text-align: center;
+  /* background-color: white; */
+  align-self: center;
+  color: silver;
+}
+#root > div.search-bar > div > div > i.active {
+  color: #ff5a00;
+}
+#root > div.search-bar > div > div > i:hover {
+  color: #ff5a00;
+}
+
+#root > div.search-bar > div > input {
+  margin-top: 5px;
+  width: 86vw;
+  height: 35px;
+  margin-left: 0.5vw;
+  border-left: white 1px solid;
+}
