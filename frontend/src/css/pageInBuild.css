@@ -1,0 +1,13 @@
+#root > img{
+    width: 50vw;
+    margin-left: 25%;
+    position: fixed;
+    top: 35vh;
+}
+
+#root > h1 {
+    width: 80vw;
+    margin-left: 20%;
+    position: fixed;
+    top: 25vh;
+}

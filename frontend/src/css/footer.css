@@ -6,10 +6,10 @@
   left: 0;
   width: 100vw;
   height: 50px;
-  overflow-x: hidden;
-  overflow-y: hidden;
   display: flex;
-  overflow-x: scroll;
+  /* overflow-x: hidden;
+  overflow-y: hidden;
+  overflow-x: scroll; */
 }
 #root > nav > a {
   display: flex;

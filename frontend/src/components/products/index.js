@@ -13,6 +13,7 @@ const Products = () => {
 
   const [count, setCount] = useState(0);
   const [uncount, setUnCount] = useState(count);
+  // const [addToCart, setAddToCart] = useState([]);
 
   useEffect(() => {
     axios
@@ -24,44 +25,66 @@ const Products = () => {
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  }, [count,uncount]);
+  }, [count, uncount]);
 
   // console.log("fetch products", fetchProducts(), )
+
+  // setAddToCart(() => {
+  //   axios
+  //   .post("http://192.168.0.146:8880/api/cart/")
+  //   .then((res) => {
+  //     const products = res.data;
+  //     console.log(products);
+  //     setProductsList(products);
+  //     setIsLoading(false);
+  //   })
+  //   .catch((error) => console.log(error));
+  // });
 
   return (
     <>
       {isLoading && <p>Products loading, please wait.</p>}
 
-      {productsArray.map((product) => (
-        <div key={product._id} className="card">
-          <div className="card-body">{product.description}
-            <h5 className="card-title">{product.name}</h5>
-            <p className="card-text">Size: {product.size}</p>
-           
-            <p className="card-text">
-          <img src="https://skateaffair.pl/wp-content/uploads/2012/02/egzule.png" className="card-img-top" alt="" />
-              <small className="text-muted">Quanity: {product.quanity}</small>
-            </p>
-            <div>
-              <button
-                className="btn-primary"
-                onClick={() => setCount(count + 1)}
-              >
-                Like {count} razy
-              </button>
-              <button
-                className="btn-danger"
-                onClick={() => setUnCount(uncount - 1)}
-              >
-                Hate {uncount} razy
-              </button>
-              <button className="btn-primary">Add to Cart</button>
-              <div className="btn-success">Price: {product.price}</div>
-              
+      <div className="subpage-lauout">
+        {productsArray.map((product) => (
+          <div key={product._id} className="card">
+            <div className="card-body">
+              {product.description}
+              <h5 className="card-title">{product.name}</h5>
+              <p className="card-text">Size: {product.size}</p>
+
+              <p className="card-text">
+                <img
+                  src={product.images}
+                  className="card-img-top"
+                  alt=""
+                />
+                <small className="text-muted">Quanity: {product.quanity}</small>
+              </p>
+              <div>
+                <button
+                  className="btn-primary"
+                  onClick={() => setCount(count + 1)}
+                >
+                  Like {count} razy
+                </button>
+                <button
+                  className="btn-danger"
+                  onClick={() => setUnCount(uncount - 1)}
+                >
+                  Hate {uncount} razy
+                </button>
+                <button
+                //  onClick={addToCart} 
+                className="btn-primary">
+                  Add to Cart
+                </button>
+                <div className="btn-success">Price: {product.price}</div>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </>
   );
 

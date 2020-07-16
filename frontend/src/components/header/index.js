@@ -8,9 +8,9 @@ const Header = () => {
   return (
     <>
       <header>
-        <div className="weather"></div>
         <div className="welcome">Welcome Johnny!</div>
-        <NavLink to="/products" className="navbar-item">
+        <div className="weather"></div>
+        <NavLink to="/categories" className="navbar-item">
           <i className="fas fa-th"></i>
           <label className="navbar-item-label"></label>
         </NavLink>

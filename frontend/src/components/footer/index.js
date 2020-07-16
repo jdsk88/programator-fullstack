@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <>
       <nav>
-        <NavLink to="/wishlist" className="navbar-item">
+        <NavLink to="/home" className="navbar-item">
           <i className="fas fa-home"></i>
           <label className="navbar-item-label">Home</label>
         </NavLink>
