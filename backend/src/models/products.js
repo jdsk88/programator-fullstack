@@ -14,7 +14,7 @@ export const productSchema = mongoose.Schema({
   description: { type: String},
   price: Number,
   size: Number,
-  images: [{ one: String, two: String, three: String }],
+  images: [],
   producer_link: String,
   quanity: Number,
   on_stock: Boolean,
