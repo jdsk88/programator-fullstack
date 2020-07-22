@@ -13,6 +13,7 @@ import Books from "../categories/Books/index";
 import Automotive from "../categories/Automotive/index";
 import Adds from "../categories/Adds/index";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Products from "../products/index";
 
 const HomePage = () => {
   return (
@@ -32,6 +33,7 @@ const HomePage = () => {
           <Route exactly path="/sport" component={Sport} />
           <Route exactly path="/automotive" component={Automotive} />
           <Route exactly path="/adds" component={Adds} />
+          <Products />
         </Switch>
       </Router>
     </>

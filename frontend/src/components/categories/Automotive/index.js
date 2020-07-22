@@ -8,13 +8,12 @@ console.log("Automotive componentd loaded");
 
 const Automotive = () => {
   const [productsArray, setProductsList] = useState([]);
-  // const [cartArray, setCartList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [isEmpty, setIsEmpty] = useState(true);
-
   const [count, setCount] = useState(0);
   const [uncount, setUnCount] = useState(count);
   // const [addToCart, setAddToCart] = useState([]);
+  // const [cartArray, setCartList] = useState([]);
+  // const [isEmpty, setIsEmpty] = useState(true);
 
   useEffect(() => {
     axios
