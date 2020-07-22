@@ -1,5 +1,5 @@
 import express from "express";
-import { Cart, InitCart, insertToDB } from "../models/cart.js";
+import { Cart, insertToDB } from "../models/cart.js";
 
 const routes = express.Router({});
 

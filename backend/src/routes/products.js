@@ -23,7 +23,7 @@ routes.get("/categories", (req, res) => {
       $regex: req.query.description || "",
     }
   })
-    // .limit(10)
+    .limit(10)
     .then((products) => {
       res.header("Access-Control-Allow-Origin", "*");
       res.send(products);
