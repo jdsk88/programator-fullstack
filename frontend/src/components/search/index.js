@@ -27,6 +27,8 @@ const Search = () => {
     });
   };
 
+
+
 // const queryResult = query;
 // const { products } = queryResult;
 // const SearchResult = products;
@@ -42,6 +44,7 @@ const Search = () => {
             placeholder="What do you search?"
             value={search_productsArray}
             onChange={(e) => setProductsList(e.target.value)}
+            onKeyDown={query}
           ></input>
           <button
             type="submit"
