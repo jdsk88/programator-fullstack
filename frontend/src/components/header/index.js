@@ -8,6 +8,7 @@ const Header = () => {
   return (
     <>
       <header>
+      <Logo />
         <div className="welcome">Welcome Johnny!</div>
         <div className="weather"></div>
         <NavLink to="/categories" className="navbar-item">

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Router , Route ,NavLink, Switch } from "react-router-dom";
 import axios from "axios";
+// import Electronics from "./Electronics";
+
 
 const Categories = () => {
   return (
@@ -22,7 +24,7 @@ const Categories = () => {
           <i className="fas fa-tree"></i>
           <label className="navbar-item-label">Garden</label>
         </NavLink>
-        <NavLink to="/foodStore" className="navbar-item">
+        <NavLink to="/store" className="navbar-item">
           <i className="fas fa-store"></i>
           <label className="navbar-item-label">Store</label>
         </NavLink>
@@ -34,7 +36,7 @@ const Categories = () => {
           <i className="fas fa-grin-stars"></i>
           <label className="navbar-item-label">Beauty</label>
         </NavLink>
-        <NavLink to="/bealthy" className="navbar-item">
+        <NavLink to="/healthy" className="navbar-item">
           <i className="fas fa-first-aid"></i>
           <label className="navbar-item-label">Healthy</label>
         </NavLink>
@@ -56,6 +58,7 @@ const Categories = () => {
           <label className="navbar-item-label">Adds</label>
         </NavLink>
             </div>
+            
     </>
   );
 };

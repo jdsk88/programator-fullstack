@@ -2,6 +2,7 @@
 } */
 
 #root > header{
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -9,6 +10,7 @@
   display: flex;
   padding: 0;
   background: #343a40 !important;
+  z-index: 1;
 }
 
 #root > header > div.weather{
@@ -71,14 +73,6 @@
   font-size: 18px;
 }
 
-#root > header > div.navbar-item{
-  position: fixed;
-  right: 6vw;
-}
-#root > header > div.navbar-item:last-child{
-  position: fixed;
-  right: 0;
-}
 
 #root > header > div{
   /* position: fixed;

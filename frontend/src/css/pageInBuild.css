@@ -1,13 +1,55 @@
-#root > img{
+div.not-found > img{
     width: 50vw;
     margin-left: 25%;
+    /* margin-right: auto; */
     position: fixed;
-    top: 35vh;
+    top: 25%;
+    /* background-color: red; */
 }
 
-#root > h1 {
-    width: 80vw;
-    margin-left: 20%;
-    position: fixed;
-    top: 25vh;
+
+#root > div > h1{
+    width: 50vw;
+    margin-left: 25%;
+    text-align: center;
+    background-color: rgb(45, 210, 240);
+    color: #ff5a00;
+    background-color: rgb(45, 210, 240);
+    border: groove 10px slategray;
+    padding: 25px;
+    border-radius: 25px;
+    box-sizing: border-box;
+    font-size: 18px;
+
+}
+#root > div > h3.product {
+    color: silver;
+    width: 100vw;
+    text-align: center;
+}
+
+#root > div > form > label {
+    color: silver;
+    text-align: center;
+}
+#root > div.page-layout > form{
+    /* margin-left: 25%; */
+    display:flex;
+    flex-direction: column;
+}
+#root > div{
+    width: 100vw;
+}
+#root > div > i.fas.fa-exclamation-triangle{
+    margin-top: 50%;
+    margin-left: 25%;
+    width: 50vw;
+    font-size: 108px;
+    color: #ff5a00;
+    background-color: rgb(45, 210, 240);
+    border: groove 10px slategray;
+    padding: 25px;
+    border-radius: 25px;
+    box-sizing: border-box;
+    text-align: center;
 }

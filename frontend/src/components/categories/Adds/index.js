@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 // import api_url from "../../config";
 import axios from "axios";
-import Header from "../header";
 // import { NavLink } from 'react-router-dom';
 
-console.log("Products componentd loaded");
+console.log("Adds componentd loaded");
 
-const Products = () => {
+const Adds = () => {
   const [productsArray, setProductsList] = useState([]);
-  
   // const [cartArray, setCartList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   // const [isEmpty, setIsEmpty] = useState(true);
@@ -20,7 +18,7 @@ const Products = () => {
 
   useEffect(() => {
     axios
-      .get("http://85.222.120.170:15118/api/products/")
+      .get("http://85.222.120.170:15118/api/products/categories?description=Adds")
       .then((res) => {
         const products = res.data;
         console.log(products);
@@ -31,36 +29,15 @@ const Products = () => {
         // }
       })
       .catch((error) => console.log(error));
-  },[]);
-
-  // const addToCart = () => {
-  //   axios.post();
-  // };
-
-  // console.log(products)
-
-  // }, [count, uncount]);
-
-  // console.log("fetch products", fetchProducts(), )
-
-  // setCartList(() => {
-  //   axios
-  //   .post("http://85.222.120.170:15118/api/cart/")
-  //   .then((res) => {
-  //     const products = res.data;
-  //     console.log(products);
-  //     setProductsList(products);
-  //     // setIsLoading(false);
-  //   })
-  //   .catch((error) => console.log(error));
-  // }, []);
+  }, []);
 
   return (
     <>
-      {isLoading && <p>Products loading, please wait.</p>}
-      {/* {isEmpty && <><p>No products in data base.</p><h2>Please add a products!</h2></>} */}
 
+      {isLoading && <p>Adds loading, please wait.</p>}
+      {/* {isEmpty && <><p>No products in data base.</p><h2>Please add a products!</h2></>} */}
       <div className="subpage-lauout">
+
         {productsArray.map((product) => (
           <div class="product-cart" key={product._id}>
             <img src={product.images} alt="no_image" />
@@ -100,4 +77,4 @@ const Products = () => {
 
   return <></>;
 };
-export default Products;
+export default Adds;

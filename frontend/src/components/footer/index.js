@@ -10,7 +10,7 @@ const Footer = () => {
           <i className="fas fa-home"></i>
           <label className="navbar-item-label">Home</label>
         </NavLink>
-        <NavLink to="/products" className="navbar-item">
+        <NavLink to="/search" className="navbar-item">
           <i className="fas fa-search"></i>
           <label className="navbar-item-label">Search</label>
         </NavLink>
@@ -18,7 +18,7 @@ const Footer = () => {
           <i className="fas fa-shopping-bag"></i>
           <label className="navbar-item-label">Cart</label>
         </NavLink>
-        <NavLink to="/cms" className="navbar-item">
+        <NavLink to="/wishlist" className="navbar-item">
           <i className="fas fa-star"></i>
           <label className="navbar-item-label">Wishlist</label>
         </NavLink>
