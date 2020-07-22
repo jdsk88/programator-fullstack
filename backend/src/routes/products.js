@@ -10,7 +10,20 @@ routes.get("/", (req, res) => {
       $regex: req.query.name || "",
     },
   })
-    .limit(10)
+    // .limit(10)
+    .then((products) => {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.send(products);
+    });
+});
+
+routes.get("/categories", (req, res) => {
+  Product.find({
+    description: {
+      $regex: req.query.description || "",
+    }
+  })
+    // .limit(10)
     .then((products) => {
       res.header("Access-Control-Allow-Origin", "*");
       res.send(products);
@@ -31,13 +44,15 @@ routes.post("/", (req, res) => {
   Product.insertMany({
     name: req.body.name,
     description: req.body.description,
+    // properties:{
     price: req.body.price,
     size: req.body.size,
     images: [req.body.images],
     producer_link: req.body.producer_link,
     quanity: req.body.quanity,
     on_stock: req.body.on_stock,
-    }
+    // }
+  }
   )
   res.header("Access-Control-Allow-Origin", "*");
   res.send("product added to database");

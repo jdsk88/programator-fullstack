@@ -10,22 +10,27 @@ let deckSize = (min, max) => {
 
 
 export const productSchema = mongoose.Schema({
+  // _id: mongoose.Schema.Types.ObjectId,
   name: { type: String },
   description: { type: String},
+  // properties: {
   price: Number,
   size: Number,
   images: [],
   producer_link: String,
   quanity: Number,
   on_stock: Boolean,
+// }
 });
 
 export const Product = mongoose.model("Product", productSchema);
 
 export const InitProducts = () => {
   const product = new Product({
+    // _id: mongoose.Schema.Types.ObjectId,
     name: "Egzul Skateboards",
     description: "SKATEBOARDING",
+    // properties:{
     size: `${deckSize().toFixed(1)}`,
     price: 199.99,
     images: [
@@ -38,7 +43,8 @@ export const InitProducts = () => {
     producer_link: "https://www.instagram.com/egzul_skateboards/?hl=pl",
     quanity: `${randomQuanity}`,
     on_stock: 1,
-  });
+  // }
+});
 
   
   return Promise.all([
