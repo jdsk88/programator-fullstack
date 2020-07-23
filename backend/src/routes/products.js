@@ -25,21 +25,31 @@ routes.get("/", (req, res) => {
       // console.log(
       //   req.method + " on: " + req.protocol + "://" + HOST + req.originalUrl + " from: " + req.connection.remoteAddress +":"+ req.connection.remotePort )
       // console.table(products.length + " products in data base");
+      console.log(req.rawHeaders);
 
+      let status = 0;
+      if (req.complete === true) {
+        status = 200;
+      } else {
+        status = 404;
+      }
       const req_info = [
         {
+          status: status,
+          complete: req.complete,
+          secure: req.secure,
           handler: req.protocol,
-          endpoint: HOST+":"+PORT+ req.originalUrl,
+          endpoint: HOST + ":" + PORT + req.originalUrl,
           method: req.method,
-          from: req.connection.remoteAddress+":"+req.connection.remotePort,
+          from: req.connection.remoteAddress + ":" + req.connection.remotePort,
           address_family: req.connection.remoteFamily,
+          products_founded: products.length,
         },
       ];
       // console.clear();
       console.table(req_info);
     });
 });
-
 
 routes.get("/search", (req, res) => {
   Product.find({
@@ -61,23 +71,29 @@ routes.get("/search", (req, res) => {
       //   req.method + " on: " + req.protocol + "://" + HOST + req.originalUrl + " from: " + req.connection.remoteAddress +":"+ req.connection.remotePort )
       // console.table(products.length + " products in data base");
 
+      let status = 0;
+      if (req.complete === true) {
+        status = 200;
+      } else {
+        status = 404;
+      }
       const req_info = [
         {
+          status: status,
+          complete: req.complete,
+          secure: req.secure,
           handler: req.protocol,
-          endpoint: HOST+":"+PORT+ req.originalUrl,
+          endpoint: HOST + ":" + PORT + req.originalUrl,
           method: req.method,
-          from: req.connection.remoteAddress+":"+req.connection.remotePort,
+          from: req.connection.remoteAddress + ":" + req.connection.remotePort,
           address_family: req.connection.remoteFamily,
           products_founded: products.length,
         },
       ];
       console.clear();
       console.table(req_info);
-      
     });
 });
-
-
 
 routes.get("/description", (req, res) => {
   Product.find({
@@ -90,13 +106,23 @@ routes.get("/description", (req, res) => {
       res.header("Access-Control-Allow-Origin", "*");
       res.send(products);
 
+      let status = 0;
+      if (req.complete === true) {
+        status = 200;
+      } else {
+        status = 404;
+      }
       const req_info = [
         {
+          status: status,
+          complete: req.complete,
+          secure: req.secure,
           handler: req.protocol,
-          endpoint: HOST + req.originalUrl,
+          endpoint: HOST + ":" + PORT + req.originalUrl,
           method: req.method,
-          from: req.connection.remoteAddress+":"+req.connection.remotePort,
+          from: req.connection.remoteAddress + ":" + req.connection.remotePort,
           address_family: req.connection.remoteFamily,
+          products_founded: products.length,
         },
       ];
       // console.clear();
@@ -114,13 +140,24 @@ routes.get("/categories", (req, res) => {
     .then((products) => {
       res.header("Access-Control-Allow-Origin", "*");
       res.send(products);
+      
+      let status = 0;
+      if (req.complete === true) {
+        status = 200;
+      } else {
+        status = 404;
+      }
       const req_info = [
         {
+          status: status,
+          complete: req.complete,
+          secure: req.secure,
           handler: req.protocol,
-          endpoint: HOST + req.originalUrl,
+          endpoint: HOST + ":" + PORT + req.originalUrl,
           method: req.method,
-          from: req.connection.remoteAddress+":"+req.connection.remotePort,
+          from: req.connection.remoteAddress + ":" + req.connection.remotePort,
           address_family: req.connection.remoteFamily,
+          products_founded: products.length,
         },
       ];
       // console.clear();
@@ -167,13 +204,24 @@ routes.post("/", (req, res) => {
   });
   res.header("Access-Control-Allow-Origin", "*");
   res.send("product added to database");
+  
+  let status = 0;
+  if (req.complete === true) {
+    status = 200;
+  } else {
+    status = 404;
+  }
   const req_info = [
     {
+      status: status,
+      complete: req.complete,
+      secure: req.secure,
       handler: req.protocol,
-      endpoint: HOST + req.originalUrl,
+      endpoint: HOST + ":" + PORT + req.originalUrl,
       method: req.method,
-      from: req.connection.remoteAddress+":"+req.connection.remotePort,
+      from: req.connection.remoteAddress + ":" + req.connection.remotePort,
       address_family: req.connection.remoteFamily,
+      products_founded: products.length,
     },
   ];
   // console.clear();
@@ -183,13 +231,24 @@ routes.post("/", (req, res) => {
 
 routes.get("/init", (req, res) => {
   InitProducts().then(() => {
+    
+    let status = 0;
+    if (req.complete === true) {
+      status = 200;
+    } else {
+      status = 404;
+    }
     const req_info = [
       {
+        status: status,
+        complete: req.complete,
+        secure: req.secure,
         handler: req.protocol,
-        endpoint: HOST + req.originalUrl,
+        endpoint: HOST + ":" + PORT + req.originalUrl,
         method: req.method,
-        from: req.connection.remoteAddress+":"+req.connection.remotePort,
+        from: req.connection.remoteAddress + ":" + req.connection.remotePort,
         address_family: req.connection.remoteFamily,
+        products_founded: products.length,
       },
     ];
     // console.clear();
@@ -200,13 +259,24 @@ routes.get("/init", (req, res) => {
 
 routes.get("/delete", (req, res) => {
   Product.deleteMany().then(() => {
+   
+    let status = 0;
+    if (req.complete === true) {
+      status = 200;
+    } else {
+      status = 404;
+    }
     const req_info = [
       {
+        status: status,
+        complete: req.complete,
+        secure: req.secure,
         handler: req.protocol,
-        endpoint: HOST + req.originalUrl,
+        endpoint: HOST + ":" + PORT + req.originalUrl,
         method: req.method,
-        from: req.connection.remoteAddress+":"+req.connection.remotePort,
+        from: req.connection.remoteAddress + ":" + req.connection.remotePort,
         address_family: req.connection.remoteFamily,
+        products_founded: products.length,
       },
     ];
     // console.clear();
