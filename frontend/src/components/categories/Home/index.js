@@ -18,7 +18,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("http://85.222.120.170:15118/api/products/categories?description=Home")
+      .get("http://85.222.120.170:15118/api/products/categories?category=Home")
       .then((res) => {
         const products = res.data;
         console.log(products);
@@ -31,6 +31,17 @@ const Home = () => {
       .catch((error) => console.log(error));
   }, []);
 
+// const addToCart = () => {
+//   event.preventDefault();
+//   axios.post("http://85.222.120.170:15118/api/cart", {
+//     user_id: Object.values,
+//     user_name: String,
+//     product_id: String,
+//     date_of_add: String,
+// }
+// }
+
+
   return (
     <>
 
@@ -42,12 +53,12 @@ const Home = () => {
           <div className="product-cart" key={product._id}>
             <img src={product.images} alt="no_image" />
             <div className="description">
-              <h5>Descriptions:</h5>
+            <h5>Category: {product.category}</h5>
               <p>{product.description}</p>
               <h5>{product.name}</h5>
               <p>Size: {product.size}</p>
-              {/* <small>Quanity: {product.quanity}</small>
-              <div>Price: {product.price}</div> */}
+              <small>Quanity: {product.quanity}</small>
+              <div>Price: {product.price}</div>
             </div>
             <div className="product cart-btns">
               <button

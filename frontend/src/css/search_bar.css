@@ -4,7 +4,12 @@
   width: 100vw;
   height: 50px;
   background: #343a40 !important;
+  z-index: 1;
 }
+#root > div.search-bar > div{
+  background: #343a40 !important;
+}
+
 #root > div > div{
 /* #root > div.search-bar > div.search-bar-items { */
   display: flex;

@@ -15,6 +15,23 @@ routes.get("/", (req, res) => {
     });
 });
 
+routes.post("/", (req, res) => {
+  Product.insertMany({
+    user_id: req.body.user_id,
+    user_name: req.body.user_name,
+    product_id: req.body.product_id,
+    date_of_add: Date.now,
+  });
+  res.header("Access-Control-Allow-Origin", "*");
+  res.send("product added to database");
+  console.log(
+    req.method + " on: " + req.protocol + "://" + HOST + req.originalUrl
+  );
+  // console.log(product);
+});
+
+
+
 routes.get("/init", (req, res) => {
   InitCart().then(() => {
     res.send("cart initialization done");

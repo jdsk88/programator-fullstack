@@ -31,7 +31,7 @@
 #root > nav > a.navbar-item.active {
   border: solid gray 0.001px;
   border-style: inset;
-  background-color: #343a40!important;
+  background-color: #272e33!important;
    color: #ff5a00;
   text-shadow: #ff5a00 2px 2px 2px 2px;
 

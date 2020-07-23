@@ -65,7 +65,7 @@ const Products = () => {
           <div class="product-cart" key={product._id}>
             <img src={product.images} alt="no_image" />
             <div class="description">
-              <h5>Descriptions:</h5>
+              <h5>Category: {product.category}</h5>
               <p>{product.description}</p>
               <h5>{product.name}</h5>
               <p>Size: {product.size}</p>

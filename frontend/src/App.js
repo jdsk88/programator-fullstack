@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../src/css/App.css";
 import "../src/css/product_cart.css";
 import "../src/css/layout.css";
@@ -25,6 +25,35 @@ import Logo from "./components/logo/logotype";
 import Search from "./components/search";
 
 const App = () => {
+  const [seconds, setSeconds] = useState(0);
+  // const [colors, setColors] = useState("");
+  // const [msg, setWarning] = useState(true);
+  const blue = () => {
+    document.querySelector(
+      "#root > div > i.fas.fa-exclamation-triangle"
+    ).style = "color:blue";
+  };
+  const orange = () => {
+    document.querySelector(
+      "#root > div > i.fas.fa-exclamation-triangle"
+    ).style = "color:red";
+  };
+  const classToglle = () => {
+    if (seconds / 0) {
+      blue();
+    } else {
+      orange();
+    }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((seconds) => seconds + 1);
+      
+    }, 1000);
+  }, []);
+
+
   return (
     <>
       <Router>
@@ -41,11 +70,13 @@ const App = () => {
                 <div className="subpage-layout">
                   <i className="fas fa-exclamation-triangle"></i>
                   <h1>Page not found</h1>
+                  <h2>{seconds} seconds have elapsed since mounting.</h2>
+                  {/* <h2>{colors} seconds have elapsed since mounting.</h2> */}
                 </div>
               </>
             )}
-            />
-            <Route exactly path="/" component={HomePage} />
+          />
+          <Route exactly path="/" component={HomePage} />
           {/* <Route exactly path="/blog" component={Blog} /> */}
           {/* <Route exactly path="/vlog" component={Vlog} /> */}
           {/* <Route exactly path="/404" component={PageInBuild} /> */}

@@ -1,6 +1,8 @@
 import express from "express";
 import { Product, InitProducts } from "../models/products.js";
-// import { product_name, product_descriptions } from "../../../frontend/src/components/cms/index.js"
+
+const HOST = process.env.HOST;
+const PORT = process.env.PORT;
 
 const routes = express.Router({});
 
@@ -9,19 +11,128 @@ routes.get("/", (req, res) => {
     name: {
       $regex: req.query.name || "",
     },
+    category: {
+      $regex: req.query.category || "",
+    },
+    description: {
+      $regex: req.query.description || "",
+    },
   })
     // .limit(10)
     .then((products) => {
       res.header("Access-Control-Allow-Origin", "*");
       res.send(products);
+      // console.log(
+      //   req.method + " on: " + req.protocol + "://" + HOST + req.originalUrl + " from: " + req.connection.remoteAddress +":"+ req.connection.remotePort )
+      // console.table(products.length + " products in data base");
+
+      const req_info = [
+        {
+          handler: req.protocol,
+          endpoint: HOST+":"+PORT+ req.originalUrl,
+          method: req.method,
+          from: req.connection.remoteAddress+":"+req.connection.remotePort,
+          address_family: req.connection.remoteFamily,
+        },
+      ];
+      // console.clear();
+      console.table(req_info);
+    });
+});
+
+
+routes.get("/search", (req, res) => {
+  Product.find({
+    name: {
+      $regex: req.query.name || "",
+    },
+    category: {
+      $regex: req.query.category || "",
+    },
+    description: {
+      $regex: req.query.description || "",
+    },
+  })
+    // .limit(10)
+    .then((products) => {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.send(products);
+      // console.log(
+      //   req.method + " on: " + req.protocol + "://" + HOST + req.originalUrl + " from: " + req.connection.remoteAddress +":"+ req.connection.remotePort )
+      // console.table(products.length + " products in data base");
+
+      const req_info = [
+        {
+          handler: req.protocol,
+          endpoint: HOST+":"+PORT+ req.originalUrl,
+          method: req.method,
+          from: req.connection.remoteAddress+":"+req.connection.remotePort,
+          address_family: req.connection.remoteFamily,
+          products_founded: products.length,
+        },
+      ];
+      console.clear();
+      console.table(req_info);
+      
+    });
+});
+
+
+
+routes.get("/description", (req, res) => {
+  Product.find({
+    description: {
+      $regex: req.query.description || "",
+    },
+  })
+    // .limit(10)
+    .then((products) => {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.send(products);
+
+      const req_info = [
+        {
+          handler: req.protocol,
+          endpoint: HOST + req.originalUrl,
+          method: req.method,
+          from: req.connection.remoteAddress+":"+req.connection.remotePort,
+          address_family: req.connection.remoteFamily,
+        },
+      ];
+      // console.clear();
+      console.table(req_info);
     });
 });
 
 routes.get("/categories", (req, res) => {
   Product.find({
-    description: {
-      $regex: req.query.description || "",
-    }
+    category: {
+      $regex: req.query.category || "",
+    },
+  })
+    // .limit(10)
+    .then((products) => {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.send(products);
+      const req_info = [
+        {
+          handler: req.protocol,
+          endpoint: HOST + req.originalUrl,
+          method: req.method,
+          from: req.connection.remoteAddress+":"+req.connection.remotePort,
+          address_family: req.connection.remoteFamily,
+        },
+      ];
+      // console.clear();
+      console.table(req_info);
+    });
+});
+
+routes.get("/price", (req, res) => {
+  Product.find({
+    price: {
+      $regex: req.query.price,
+    },
   })
     .limit(10)
     .then((products) => {
@@ -43,6 +154,7 @@ routes.get("/", (req, res) => {
 routes.post("/", (req, res) => {
   Product.insertMany({
     name: req.body.name,
+    category: req.body.category,
     description: req.body.description,
     // properties:{
     price: req.body.price,
@@ -52,21 +164,53 @@ routes.post("/", (req, res) => {
     quanity: req.body.quanity,
     on_stock: req.body.on_stock,
     // }
-  }
-  )
+  });
   res.header("Access-Control-Allow-Origin", "*");
   res.send("product added to database");
+  const req_info = [
+    {
+      handler: req.protocol,
+      endpoint: HOST + req.originalUrl,
+      method: req.method,
+      from: req.connection.remoteAddress+":"+req.connection.remotePort,
+      address_family: req.connection.remoteFamily,
+    },
+  ];
+  // console.clear();
+  console.table(req_info);
   // console.log(product);
 });
 
 routes.get("/init", (req, res) => {
   InitProducts().then(() => {
+    const req_info = [
+      {
+        handler: req.protocol,
+        endpoint: HOST + req.originalUrl,
+        method: req.method,
+        from: req.connection.remoteAddress+":"+req.connection.remotePort,
+        address_family: req.connection.remoteFamily,
+      },
+    ];
+    // console.clear();
+    console.table(req_info);
     res.send("done");
   });
 });
 
 routes.get("/delete", (req, res) => {
   Product.deleteMany().then(() => {
+    const req_info = [
+      {
+        handler: req.protocol,
+        endpoint: HOST + req.originalUrl,
+        method: req.method,
+        from: req.connection.remoteAddress+":"+req.connection.remotePort,
+        address_family: req.connection.remoteFamily,
+      },
+    ];
+    // console.clear();
+    console.table(req_info);
     res.send("product list deleted");
   });
 });

@@ -12,6 +12,7 @@ let deckSize = (min, max) => {
 export const productSchema = mongoose.Schema({
   // _id: mongoose.Schema.Types.ObjectId,
   name: { type: String },
+  category: {type: String},
   description: { type: String},
   // properties: {
   price: Number,
@@ -29,6 +30,7 @@ export const InitProducts = () => {
   const product = new Product({
     // _id: mongoose.Schema.Types.ObjectId,
     name: "Egzul Skateboards",
+    category: "Sport",
     description: "SKATEBOARDING",
     // properties:{
     size: `${deckSize().toFixed(1)}`,

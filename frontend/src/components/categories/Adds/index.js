@@ -18,7 +18,7 @@ const Adds = () => {
 
   useEffect(() => {
     axios
-      .get("http://85.222.120.170:15118/api/products/categories?description=Adds")
+      .get("http://85.222.120.170:15118/api/products/categories?category=Adds")
       .then((res) => {
         const products = res.data;
         console.log(products);
@@ -42,7 +42,7 @@ const Adds = () => {
           <div class="product-cart" key={product._id}>
             <img src={product.images} alt="no_image" />
             <div class="description">
-              <h5>Descriptions:</h5>
+              <h5>Category: {product.category}</h5>
               <p>{product.description}</p>
               <h5>{product.name}</h5>
               <p>Size: {product.size}</p>

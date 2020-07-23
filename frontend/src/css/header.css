@@ -56,14 +56,14 @@
 #root > header > a.navbar-item.active {
   border: solid gray 0.5px;
   border-style: inset;
-  /* background-color: #6d6a6f; */
+  /* background-color: #272e33!important; */
   /* background-color:black;  */
   /* color: #32f0ec; */
   color: #ff5a00;
 
   text-shadow: #ff5a00 2px 2px 2px 2px;
 
-  background: #343a40 !important;
+  background: #272e33 !important;
 }
 #root > header > a.navbar-item > i {
   font-size: 18px;
