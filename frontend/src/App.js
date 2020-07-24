@@ -49,10 +49,8 @@ const App = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds((seconds) => seconds + 1);
-      
     }, 1000);
   }, []);
-
 
   return (
     <>
@@ -76,12 +74,12 @@ const App = () => {
               </>
             )}
           />
-          <Route exactly path="/" component={HomePage} />
           {/* <Route exactly path="/blog" component={Blog} /> */}
           {/* <Route exactly path="/vlog" component={Vlog} /> */}
           {/* <Route exactly path="/404" component={PageInBuild} /> */}
         </Switch>
-        <Footer />7
+
+        <Footer />
       </Router>
     </>
   );

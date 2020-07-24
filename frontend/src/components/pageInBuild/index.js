@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const PageInBuild = () => {
+  const [seconds, setSeconds] = useState(0);
 
-    return (<>
-    <div className="not-found">
-    <img  src="https://image.flaticon.com/icons/png/512/103/103085.png"/>
-    <h1 >Page in build</h1>
-    </div>
-    
-    
-    </>)
-}
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((seconds) => seconds + 1);
+    }, 1000);
+  }, []);
+  return (
+    <>
+      <div className="subpage-layout">
+        <i className="fas fa-exclamation-triangle"></i>
+        <h1>Page not found</h1>
+        <h2>{seconds} seconds have elapsed since mounting.</h2>
+        {/* <h2>{colors} seconds have elapsed since mounting.</h2> */}
+      </div>
+    </>
+  );
+};
 
-export default PageInBuild
+export default PageInBuild;

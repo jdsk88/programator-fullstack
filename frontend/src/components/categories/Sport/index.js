@@ -39,37 +39,35 @@ const Sport = () => {
       <div className="subpage-lauout">
 
         {productsArray.map((product) => (
-          <div className="product-cart" key={product._id}>
-            <img src={product.images} alt="no_image" />
-            <div className="description">
-            <h5>Category: {product.category}</h5>
-              <p>{product.description}</p>
-              <h5>{product.name}</h5>
-              <p>Size: {product.size}</p>
-              {/* <small>Quanity: {product.quanity}</small>
-              <div>Price: {product.price}</div> */}
-            </div>
-            <div className="product cart-btns">
-              <button
-                className="btn-primary"
-                onClick={() => setCount(count + 1)}
-              >
-                {count} Like
-              </button>
-              <button
-                className="btn-danger"
-                onClick={() => setUnCount(uncount - 1)}
-              >
-                {uncount} Hate
-              </button>
-              <button
-                //  onClick={addToCart}
-                className="btn-primary"
-              >
-                <p>Add to Cart</p> <i className="fas fa-shopping-bag"></i>
-              </button>
-            </div>
+          <div class="card" key={product._id}>
+            <span className="price">${product.price}</span>
+          <div>
+            <img src={product.images} alt="alt" />
           </div>
+          <section class="details">
+            <div class="min-details">
+              <h1>
+                {product.name}
+                <span>{product.category}</span>
+              </h1>
+              <h1 class="price">${product.price}</h1>
+            </div>
+
+            <div class="options">
+              <div class="options-colors">
+                <span>{product.description}</span>
+              </div>
+              <div class="options-size">
+                <h1>
+                  On stock: {product.quanity} ({product.on_stock})
+                </h1>
+              </div>
+            </div>
+            <a href="#" class="btn">
+              add to cart
+            </a>
+          </section>
+        </div>
         ))}
       </div>
     </>

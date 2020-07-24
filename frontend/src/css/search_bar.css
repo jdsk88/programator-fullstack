@@ -36,7 +36,7 @@
   width: 7vw;
   /* background-color: white; */
 }
-#root > div.search-bar > div > button{
+#root > div.search-bar > div > button.search-bar-btn{
   width: 20vw;
   box-sizing: border-box;
   height: 30px;

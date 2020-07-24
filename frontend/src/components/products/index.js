@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, createRef } from "react";
 import ReactDOM from "react-dom";
 // import api_url from "../../config";
 import axios from "axios";
@@ -9,14 +9,13 @@ console.log("Products componentd loaded");
 
 const Products = () => {
   const [productsArray, setProductsList] = useState([]);
-  
-  // const [cartArray, setCartList] = useState([]);
+  const productsLandingFix = () => {
+    document.querySelector("#root > div.subpage-lauout").style = "top:120px";
+  };
   const [isLoading, setIsLoading] = useState(true);
-  // const [isEmpty, setIsEmpty] = useState(true);
 
   const [count, setCount] = useState(0);
   const [uncount, setUnCount] = useState(count);
-  // const [addToCart, setAddToCart] = useState([]);
 
   useEffect(() => {
     axios
@@ -25,73 +24,52 @@ const Products = () => {
         const products = res.data;
         console.log(products);
         setProductsList(products);
+        console.log(products.product._id);
         setIsLoading(false);
-        // if (productsArray.length < 1) {
-        //   setIsEmpty(false);
-        // }
+        productsLandingFix();
       })
       .catch((error) => console.log(error));
-  },[]);
+  }, []);
 
-  // const addToCart = () => {
-  //   axios.post();
-  // };
-
-  // console.log(products)
-
-  // }, [count, uncount]);
-
-  // console.log("fetch products", fetchProducts(), )
-
-  // setCartList(() => {
-  //   axios
-  //   .post("http://85.222.120.170:15118/api/cart/")
-  //   .then((res) => {
-  //     const products = res.data;
-  //     console.log(products);
-  //     setProductsList(products);
-  //     // setIsLoading(false);
-  //   })
-  //   .catch((error) => console.log(error));
-  // }, []);
+  const buttonRef = createRef();
+  const focusButton = () => {
+    console.log(buttonRef.current);
+  };
 
   return (
     <>
       {isLoading && <p>Products loading, please wait.</p>}
-      {/* {isEmpty && <><p>No products in data base.</p><h2>Please add a products!</h2></>} */}
 
       <div className="subpage-lauout">
         {productsArray.map((product) => (
-          <div class="product-cart" key={product._id}>
-            <img src={product.images} alt="no_image" />
-            <div class="description">
-              <h5>Category: {product.category}</h5>
-              <p>{product.description}</p>
-              <h5>{product.name}</h5>
-              <p>Size: {product.size}</p>
-              {/* <small>Quanity: {product.quanity}</small>
-              <div>Price: {product.price}</div> */}
-            </div>
-            <div class="product cart-btns">
-              <button
-                className="btn-primary"
-                onClick={() => setCount(count + 1)}
-              >
-                {count} Like
-              </button>
-              <button
-                className="btn-danger"
-                onClick={() => setUnCount(uncount - 1)}
-              >
-                {uncount} Hate
-              </button>
-              <button
-                //  onClick={addToCart}
-                className="btn-primary"
-              >
-                <p>Add to Cart</p> <i className="fas fa-shopping-bag"></i>
-              </button>
-            </div>
+          <div class="card" key={product._id}>
+            <div className="first-price">tap to more info -----  ${product.price}</div>
+            <figure>
+              <img src={product.images} alt="alt" />
+            </figure>
+            <section class="details">
+              <div class="min-details">
+                <h1>
+                  {product.name}
+                  <span>{product.category}</span>
+                </h1>
+                <h1 class="price">${product.price}</h1>
+              </div>
+
+              <div class="options">
+                <div class="options-colors">
+                  <span>{product.description}</span>
+                </div>
+                <div class="options-size">
+                  <h1>
+                    On stock: {product.quanity} ({product.on_stock})
+                  </h1>
+                </div>
+              </div>
+              <a href="#" class="btn">
+                add to cart
+              </a>
+            </section>
           </div>
         ))}
       </div>

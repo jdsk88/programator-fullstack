@@ -18,7 +18,7 @@ code {
     monospace;
 }
 
-.page-layout {
+/* .page-layout {
   width: 100vw;
   position: fixed;
   top:45px;
@@ -27,4 +27,4 @@ code {
   overflow-y: hidden;
   overflow-x: hidden;
   overflow: scroll;
-}
+} */

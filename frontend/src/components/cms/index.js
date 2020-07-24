@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../../css/inputs.css";
 import api_url from "../../config";
+import DeleteProducts from "./deleteProducts";
 const Cms = () => {
+  // const [delete_products, setProductsDeleted] = useState("");
   const [product_name, setProductName] = useState("");
   const [product_category, setProductCategory] = useState("");
   const [product_description, setProductDescription] = useState("");
@@ -11,7 +14,8 @@ const Cms = () => {
   const [product_producer_link, setProductProducer] = useState("");
   const [product_quanity, setProductQuanity] = useState("");
   const [product_on_stock, setProductOnStock] = useState("");
-  console.log(product_category)
+  console.log(product_category);
+
   const postProduct = (event) => {
     event.preventDefault();
     axios.post("http://85.222.120.170:15118/api/products", {
@@ -38,10 +42,11 @@ const Cms = () => {
     console.log(product_on_stock);
     console.log("cms working");
   };
-
+  
   return (
     <div className="page-layout">
-      <h3 className="product">Add product</h3>
+      
+      <p className="product">Add product</p>
       <form>
         <label>Name</label>
         <input
@@ -71,13 +76,6 @@ const Cms = () => {
           <option value="Adds">Adds</option>
         </select>
 
-        <label>Descriptions</label>
-        <input
-          type="text"
-          placeholder="enter product description"
-          value={product_description}
-          onChange={(e) => setProductDescription(e.target.value)}
-        />
         <label>Price</label>
         <input
           type="number"
@@ -120,19 +118,6 @@ const Cms = () => {
           value={product_on_stock}
           onChange={(e) => setProductOnStock(e.target.value)}
         />
-        <label>Enter something!</label>
-        <input type="submit" value="submit" onClick={postProduct} />
-      </form>
-
-      {/* <h3 className="product">Update product</h3>
-      <form>
-        <label>Name</label>
-        <input
-          type="text"
-          placeholder="enter product name"
-          value={product_name}
-          onChange={(e) => setProductName(e.target.value)}
-        />
         <label>Descriptions</label>
         <input
           type="text"
@@ -140,86 +125,14 @@ const Cms = () => {
           value={product_description}
           onChange={(e) => setProductDescription(e.target.value)}
         />
-        <label>Price</label>
         <input
-          type="number"
-          placeholder="enter product price"
-          value={product_price}
-          onChange={(e) => setProductPrice(e.target.value)}
+          type="submit"
+          value="Add product to data base"
+          onClick={postProduct}
         />
-        <label>Size</label>
-        <input
-          type="number"
-          placeholder="enter product size"
-          value={product_size}
-          onChange={(e) => setProductSize(e.target.value)}
-        />
-        <label>Enter something!</label>
-        <input
-          type="text"
-          placeholder="enter product images"
-          value={product_images}
-          onChange={(e) => setProductImages(e.target.value)}
-        />
-        <label>Enter something!</label>
-        <input
-          type="text"
-          placeholder="enter producer link"
-          value={product_producer_link}
-          onChange={(e) => setProductProducer(e.target.value)}
-        />
-        <label>Enter something!</label>
-        <input
-          type="number"
-          placeholder="enter product quanity"
-          value={product_quanity}
-          onChange={(e) => setProductQuanity(e.target.value)}
-        />
-        <label>Enter something!</label>
-        <input
-          type="boolean"
-          placeholder="enter product status"
-          value={product_on_stock}
-          onChange={(e) => setProductOnStock(e.target.value)}
-        />
-        <label>Enter something!</label>
-        <input type="submit" value="submit" onClick={postProduct} />
-      </form> */}
-
-
-<div className="product-cart">
-            <img src={product_images} alt="no_image" />
-            <div className="description">
-            <h5>Category: {product_category}</h5>
-              <p>{product_description}</p>
-              <h5>{product_name}</h5>
-              <p>Size: {product_size}</p>
-              <small>Quanity: {product_quanity}</small>
-              <small>On stock: {product_on_stock}</small>
-              <div>Price: {product_price}</div>
-            </div>
-            <div className="product cart-btns">
-             <button></button>
-             <button></button>
-              <button
-                //  onClick={addToCart}
-                className="btn-primary"
-              >
-                <p>Add to Cart</p> <i className="fas fa-shopping-bag"></i>
-              </button>
-            </div>
-          </div>
-
-      {/* <p>{product_category}</p>
-      <p>{product_description}</p>
-      <p>{product_images}</p>
-      <p>{product_name}</p>
-      <p>{product_on_stock}</p>
-      <p>{product_price}</p>
-      <p>{product_producer_link}</p>
-      <p>{product_quanity}</p>
-      <p>{product_size}</p> */}
-
+      </form>
+        <br></br>
+        <DeleteProducts />
     </div>
   );
 };

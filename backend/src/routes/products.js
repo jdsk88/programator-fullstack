@@ -1,6 +1,8 @@
 import express from "express";
 import { Product, InitProducts } from "../models/products.js";
-
+import fs from "fs";
+import date from "date-and-time";
+const now = new Date();
 const HOST = process.env.HOST;
 const PORT = process.env.PORT;
 
@@ -22,10 +24,6 @@ routes.get("/", (req, res) => {
     .then((products) => {
       res.header("Access-Control-Allow-Origin", "*");
       res.send(products);
-      // console.log(
-      //   req.method + " on: " + req.protocol + "://" + HOST + req.originalUrl + " from: " + req.connection.remoteAddress +":"+ req.connection.remotePort )
-      // console.table(products.length + " products in data base");
-      console.log(req.rawHeaders);
 
       let status = 0;
       if (req.complete === true) {
@@ -33,21 +31,46 @@ routes.get("/", (req, res) => {
       } else {
         status = 404;
       }
+
       const req_info = [
         {
-          status: status,
-          complete: req.complete,
-          secure: req.secure,
-          handler: req.protocol,
-          endpoint: HOST + ":" + PORT + req.originalUrl,
           method: req.method,
+          handler: req.protocol,
+
+          endpoint: HOST + ":" + PORT + req.originalUrl,
           from: req.connection.remoteAddress + ":" + req.connection.remotePort,
           address_family: req.connection.remoteFamily,
+          status: status,
           products_founded: products.length,
+          request_time: date.format(now, "YYYY/MM/DD HH:mm:ss"),
         },
       ];
-      // console.clear();
       console.table(req_info);
+
+      // write request information into json file
+      // var data_array = {
+      //   array: [],
+      // };
+      // data_array.array.push(req_info);
+      // var data_query = JSON.stringify(data_array);
+      // fs.writeFile("getQueries.json", data_query, "utf8", (error) =>
+      //   console.log("Error ? : " + error)
+      // );
+      // fs.readFile("getQueries.json", "utf8", function readFileCallback(
+      //   err,
+      //   data_load
+      // ) {
+      //   if (err) {
+      //     console.log(err);
+      //   } else {
+      //     data_array = JSON.parse(data_load);
+      //     data_array.array.push(data_query);
+      //     data_array = JSON.stringify();
+      //     fs.writeFile("getQueries.json", data_query, "utf8", (error) =>
+      //       console.log("Error ? : " + error)
+      //     );
+      //   }
+      // });
     });
 });
 
@@ -67,10 +90,6 @@ routes.get("/search", (req, res) => {
     .then((products) => {
       res.header("Access-Control-Allow-Origin", "*");
       res.send(products);
-      // console.log(
-      //   req.method + " on: " + req.protocol + "://" + HOST + req.originalUrl + " from: " + req.connection.remoteAddress +":"+ req.connection.remotePort )
-      // console.table(products.length + " products in data base");
-
       let status = 0;
       if (req.complete === true) {
         status = 200;
@@ -79,19 +98,42 @@ routes.get("/search", (req, res) => {
       }
       const req_info = [
         {
-          status: status,
-          complete: req.complete,
-          secure: req.secure,
+          method: req.method,
           handler: req.protocol,
           endpoint: HOST + ":" + PORT + req.originalUrl,
-          method: req.method,
           from: req.connection.remoteAddress + ":" + req.connection.remotePort,
           address_family: req.connection.remoteFamily,
+          status: status,
           products_founded: products.length,
+          request_time: date.format(now, "YYYY/MM/DD HH:mm:ss"),
         },
       ];
       console.clear();
       console.table(req_info);
+      // write request information into json file
+      // var data_array = {
+      //   array: [],
+      // };
+      // data_array.array.push(req_info);
+      // var data_query = JSON.stringify(data_array);
+      // fs.writeFile("getSearchBarQueries.json", data_query, "utf8", (error) =>
+      //   console.log("Error ? : " + error)
+      // );
+      // fs.readFile("getSearchBarQueries.json", "utf8", function readFileCallback(
+      //   err,
+      //   data_load
+      // ) {
+      //   if (err) {
+      //     console.log(err);
+      //   } else {
+      //     data_array = JSON.parse(data_load);
+      //     data_array.array.push(data_query);
+      //     data_array = JSON.stringify();
+      //     fs.writeFile("getQueries.json", data_query, "utf8", (error) =>
+      //       console.log("Error ? : " + error)
+      //     );
+      //   }
+      // });
     });
 });
 
@@ -114,19 +156,43 @@ routes.get("/description", (req, res) => {
       }
       const req_info = [
         {
-          status: status,
-          complete: req.complete,
-          secure: req.secure,
+          method: req.method,
           handler: req.protocol,
           endpoint: HOST + ":" + PORT + req.originalUrl,
-          method: req.method,
           from: req.connection.remoteAddress + ":" + req.connection.remotePort,
           address_family: req.connection.remoteFamily,
+          status: status,
           products_founded: products.length,
+          request_time: date.format(now, "YYYY/MM/DD HH:mm:ss"),
         },
       ];
       // console.clear();
       console.table(req_info);
+      // write request information into json file
+      // var data_array = {
+      //   array: [],
+      // };
+      // data_array.array.push(req_info);
+      // var data_query = JSON.stringify(data_array);
+      // fs.writeFile("getDescritionQueries.json", data_query, "utf8", (error) =>
+      //   console.log("Error ? : " + error)
+      // );
+      // fs.readFile(
+      //   "getDescritionQueries.json",
+      //   "utf8",
+      //   function readFileCallback(err, data_load) {
+      //     if (err) {
+      //       console.log(err);
+      //     } else {
+      //       data_array = JSON.parse(data_load);
+      //       data_array.array.push(data_query);
+      //       data_array = JSON.stringify();
+      //       fs.writeFile("getQueries.json", data_query, "utf8", (error) =>
+      //         console.log("Error ? : " + error)
+      //       );
+      //     }
+      //   }
+      // );
     });
 });
 
@@ -140,7 +206,7 @@ routes.get("/categories", (req, res) => {
     .then((products) => {
       res.header("Access-Control-Allow-Origin", "*");
       res.send(products);
-      
+
       let status = 0;
       if (req.complete === true) {
         status = 200;
@@ -149,19 +215,42 @@ routes.get("/categories", (req, res) => {
       }
       const req_info = [
         {
-          status: status,
-          complete: req.complete,
-          secure: req.secure,
+          method: req.method,
           handler: req.protocol,
           endpoint: HOST + ":" + PORT + req.originalUrl,
-          method: req.method,
           from: req.connection.remoteAddress + ":" + req.connection.remotePort,
           address_family: req.connection.remoteFamily,
+          status: status,
           products_founded: products.length,
+          request_time: date.format(now, "YYYY/MM/DD HH:mm:ss"),
         },
       ];
       // console.clear();
       console.table(req_info);
+      // write request information into json file
+      // var data_array = {
+      //   array: [],
+      // };
+      // data_array.array.push(req_info);
+      // var data_query = JSON.stringify(data_array);
+      // fs.writeFile("getCategoryQueries.json", data_query, "utf8", (error) =>
+      //   console.log("Error ? : " + error)
+      // );
+      // fs.readFile("getCategoryQueries.json", "utf8", function readFileCallback(
+      //   err,
+      //   data_load
+      // ) {
+      //   if (err) {
+      //     console.log(err);
+      //   } else {
+      //     data_array = JSON.parse(data_load);
+      //     data_array.array.push(data_query);
+      //     data_array = JSON.stringify();
+      //     fs.writeFile("getQueries.json", data_query, "utf8", (error) =>
+      //       console.log("Error ? : " + error)
+      //     );
+      //   }
+      // });
     });
 });
 
@@ -200,11 +289,12 @@ routes.post("/", (req, res) => {
     producer_link: req.body.producer_link,
     quanity: req.body.quanity,
     on_stock: req.body.on_stock,
+    request_time: date.format(now, "YYYY/MM/DD HH:mm:ss"),
     // }
   });
   res.header("Access-Control-Allow-Origin", "*");
   res.send("product added to database");
-  
+
   let status = 0;
   if (req.complete === true) {
     status = 200;
@@ -213,25 +303,25 @@ routes.post("/", (req, res) => {
   }
   const req_info = [
     {
-      status: status,
-      complete: req.complete,
-      secure: req.secure,
-      handler: req.protocol,
-      endpoint: HOST + ":" + PORT + req.originalUrl,
       method: req.method,
+      handler: req.protocol,
+      // complete: req.complete,
+      // secure: req.secure,
+      endpoint: HOST + ":" + PORT + req.originalUrl,
       from: req.connection.remoteAddress + ":" + req.connection.remotePort,
       address_family: req.connection.remoteFamily,
-      products_founded: products.length,
+      status: status,
+      // products_founded: products.length,
+      request_time: date.format(now, "YYYY/MM/DD HH:mm:ss"),
     },
   ];
   // console.clear();
   console.table(req_info);
-  // console.log(product);
+  
 });
 
 routes.get("/init", (req, res) => {
   InitProducts().then(() => {
-    
     let status = 0;
     if (req.complete === true) {
       status = 200;
@@ -240,15 +330,16 @@ routes.get("/init", (req, res) => {
     }
     const req_info = [
       {
-        status: status,
-        complete: req.complete,
-        secure: req.secure,
-        handler: req.protocol,
-        endpoint: HOST + ":" + PORT + req.originalUrl,
         method: req.method,
+        handler: req.protocol,
+        // complete: req.complete,
+        // secure: req.secure,
+        endpoint: HOST + ":" + PORT + req.originalUrl,
         from: req.connection.remoteAddress + ":" + req.connection.remotePort,
         address_family: req.connection.remoteFamily,
+        status: status,
         products_founded: products.length,
+        request_time: date.format(now, "YYYY/MM/DD HH:mm:ss"),
       },
     ];
     // console.clear();
@@ -259,7 +350,6 @@ routes.get("/init", (req, res) => {
 
 routes.get("/delete", (req, res) => {
   Product.deleteMany().then(() => {
-   
     let status = 0;
     if (req.complete === true) {
       status = 200;
@@ -268,18 +358,15 @@ routes.get("/delete", (req, res) => {
     }
     const req_info = [
       {
-        status: status,
-        complete: req.complete,
-        secure: req.secure,
+        method: req.method,
         handler: req.protocol,
         endpoint: HOST + ":" + PORT + req.originalUrl,
-        method: req.method,
         from: req.connection.remoteAddress + ":" + req.connection.remotePort,
         address_family: req.connection.remoteFamily,
-        products_founded: products.length,
+        status: status,
+        request_time: date.format(now, "YYYY/MM/DD HH:mm:ss"),
       },
     ];
-    // console.clear();
     console.table(req_info);
     res.send("product list deleted");
   });
