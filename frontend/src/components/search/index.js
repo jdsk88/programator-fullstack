@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-// import { NavLink } from "react-router-dom";
 
 console.log("Search componentd loaded");
 
 const Search = () => {
   const [search_input, setProductsList] = useState([]);
   const [search_result, setResultList] = useState([]);
-  // const [query, setQueryResult] = useState([]);
-  // console.log(search_input);
   console.log(search_result);
   const [count, setCount] = useState(0);
   const [uncount, setUnCount] = useState(count);
@@ -19,11 +16,10 @@ const Search = () => {
 
   const query = () => {
     Axios.get(
-      `http://85.222.120.170:15118/api/products/search?name=${search_input}`
+      `http://192.168.0.16:8880/api/products/search?name=${search_input}`
     ).then((res) => {
       const result = res.data;
       setResultList(result);
-      // setQueryResult(query);
       productsLandingFix();
       console.log(result);
     });

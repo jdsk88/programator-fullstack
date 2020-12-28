@@ -2,7 +2,7 @@ import axios from "axios";
 
 const getProducts = () => {
   axios
-    .get("http://192.168.0.146:8880/api/products/")
+    .get("http://localhost:8888/api/settings/5fe1be5ca18b082c28bee676")
     .then((res) => {
       const products = res.data;
       console.log(products);

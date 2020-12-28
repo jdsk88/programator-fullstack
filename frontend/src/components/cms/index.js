@@ -18,7 +18,7 @@ const Cms = () => {
 
   const postProduct = (event) => {
     event.preventDefault();
-    axios.post("http://85.222.120.170:15118/api/products", {
+    axios.post("http://192.168.0.16:8880/api/products", {
       name: product_name,
       category: product_category,
       description: product_description,

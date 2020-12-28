@@ -19,7 +19,7 @@ const Electronics = () => {
 
   useEffect(() => {
     axios
-      .get("http://85.222.120.170:15118/api/products/categories?category=Electronics")
+      .get("http://192.168.0.16:8880/api/products/categories?category=Electronics")
       .then((res) => {
         const products = res.data;
         console.log(products);

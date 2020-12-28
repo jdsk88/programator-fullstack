@@ -18,15 +18,12 @@ const Clothes = () => {
 
   useEffect(() => {
     axios
-      .get("http://85.222.120.170:15118/api/products/categories?category=Clothes")
+      .get("http://192.168.0.16:8880/api/products/categories?category=Clothes")
       .then((res) => {
         const products = res.data;
         console.log(products);
         setProductsList(products);
         setIsLoading(false);
-        // if (productsArray.length < 1) {
-        //   setIsEmpty(false);
-        // }
       })
       .catch((error) => console.log(error));
   }, []);
@@ -35,7 +32,6 @@ const Clothes = () => {
     <>
 
       {isLoading && <p>Clothes loading, please wait.</p>}
-      {/* {isEmpty && <><p>No products in data base.</p><h2>Please add a products!</h2></>} */}
       <div className="subpage-lauout">
 
         {productsArray.map((product) => (

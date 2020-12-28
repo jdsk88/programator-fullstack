@@ -1,9 +1,7 @@
 import React, { useRef, useState, useEffect, createRef } from "react";
-import ReactDOM from "react-dom";
-// import api_url from "../../config";
 import axios from "axios";
-import Header from "../header";
-// import { NavLink } from 'react-router-dom';
+import DB_API_URL from "../../constants"
+
 
 console.log("Products componentd loaded");
 
@@ -19,7 +17,7 @@ const Products = () => {
 
   useEffect(() => {
     axios
-      .get("http://85.222.120.170:15118/api/products/")
+      .get(DB_API_URL+"/products")
       .then((res) => {
         const products = res.data;
         console.log(products);
